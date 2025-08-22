@@ -105,6 +105,10 @@ These functions represent two different ways to figure out how accurate the netw
 
 One of the functions (calculate_max_likelihood) always chooses the most likely target (i.e. the mode). The other (calculate_max_accuracy) picks from among the possibles with a frequency given by how likely they are.
 
-## name_network_keras.py
+### name_network_keras.py
 
 Recreates the functions in name_network_scratch.py more or less 1-to-1, but using Keras/TensorFlow. Utilizes a converstion from Keras to tfLite for reasons that I can no longer remember.
+
+## Generalized
+
+This version is largely the same, except rather than using baseball player names, it generates fake company names based on data from the NY Stock Exchange and NASDAQ. Also comes in scratch and Keras versions. Could be generalized very easily to train on any list of names.

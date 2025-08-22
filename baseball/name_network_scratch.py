@@ -487,7 +487,7 @@ def predict_accuracy(letters_list):
 
 def get_most_likely(letters_list):
     '''
-		What if instead of drawing from the list of letter with 
+		What if instead of drawing from the list of letters with 
 		frequency given by the list, we instead always draw
 		the most frequent letter in the list (or if there is a
 		tie, we choose at random from among the ties)

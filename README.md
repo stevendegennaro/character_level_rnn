@@ -10,7 +10,7 @@ The original version of the code was created to train on a list of the first and
 
 I later rewrote the networks using Keras and TensorFlow, partly as an exercise in teaching myself those packages, and partly for rather considerable gains in training speed.
 
-A more complete description of the project is documented in a series of blog posts:
+A more complete description of the project is documented in a series of blog posts:<br>
 [Building a Character-level Recurrent Neural Network to Generate Fake Baseball Player Names, Part 1](https://medium.com/@datasciencefilmmaker/whos-on-first-1-394dda0db523)<br>
 [Building a Character-level Recurrent Neural Network to Generate Fake Baseball Player Names, Part 2](https://medium.com/@datasciencefilmmaker/whos-on-first-2-8a857f887124)<br>
 [Using SimpleRNN in Keras to Generate Fake Baseball Player Names](https://medium.com/@datasciencefilmmaker/whos-on-first-3-569da9d2b4f3)<br>
@@ -99,7 +99,11 @@ Tests how long it takes to generate n_players names, then calculates how many of
 
 **manual_accuracy_test()**, **predict_accuracy()**, **get_most_likely()**, **calculate_max_accuracy()**, adn **calculate_max_likelihood()**
 
-These methods are used to calculate the actual theoretical maximum accuracy of the network. Because names have a lot of redundancy, it's impossible for _any_ network to obtain 100% prediction accuracy. For example, the input "B" can be followed by "o" for "Bob" or "i" for "Bill" or "a" for "Barry". In the accuracy calculations that the network does as it trains, if the input is "B" and the target is "o", then the network is "wrong" if it predicts "i" for that particular target. These functions represent two different ways to figure out how accurate the network could possibly be in the best case scenario, if it chose among the possible letters. (So, for instance, if "B" can be follwed by "o" or "i" or "a" with equal frequency, then the network can only be correct at most a third of the time for that input. The calculation changes slightly if the probabilities are not equal, but the idea remains the same.) These functions take every single possible input string, figure out every possible target for that input, and then calculates the probability of hitting *a particular* one of those targets.
+These methods are used to calculate the actual theoretical maximum accuracy of the network. Because names have a lot of redundancy, it's impossible for _any_ network to obtain 100% prediction accuracy. For example, the input "B" can be followed by "o" for "Bob" or "i" for "Bill" or "a" for "Barry". In the accuracy calculations that the network does as it trains, if the input is "B" and the target is "o", then the network is "wrong" if it predicts "i" for that particular target.
+
+These functions represent two different ways to figure out how accurate the network could possibly be in the best case scenario, if it chose among the possible letters. (So, for instance, if "B" can be follwed by "o" or "i" or "a" with equal frequency, then the network can only be correct at most a third of the time for that input. The calculation changes slightly if the probabilities are not equal, but the idea remains the same.) These functions take every single possible input string, figure out every possible target for that input, and then calculates the probability of hitting *a particular* one of those targets.
+
+One of the functions (calculate_max_likelihood) always chooses the most likely target (i.e. the mode). The other (calculate_max_accuracy) picks from among the possibles with a frequency given by how likely they are.
 
 ## name_network_keras.py
 
